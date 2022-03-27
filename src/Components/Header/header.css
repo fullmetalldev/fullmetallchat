@@ -1,10 +1,10 @@
 .header {
-  background: #7ec77c;
+  background: #212121;
   z-index: 3;
   position: sticky;
   left: 0;
   top: 0;
-  box-shadow: 0 3px 4px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 10px 4px rgba(255, 255, 255, 0.09);
 }
 .header__row {
   display: flex;

@@ -3,12 +3,13 @@
   flex-direction: column;
   overflow-y: scroll;
   row-gap: 15px;
-  max-height: calc(100vh - (80px + 88px));
+  max-height: calc(100vh - (80px + 120px));
   padding: 30px 0;
 
   .messages__row_message {
+    font-weight: 500;
     border-radius: 0 20px 20px 20px;
-    background: #bec7c3;
+    background: #212121;
     display: flex;
     flex-direction: column;
     row-gap: 5px;
@@ -16,7 +17,9 @@
     color: #ffffff;
     align-self: flex-start;
     animation: 1s linear msgGet;
-
+    .author{
+      color: #00c1a6;
+    }
     .author__msg {
       display: flex;
       flex-direction: row;
@@ -32,15 +35,13 @@
   }
 
   .your {
+    color: #ffffff;
     align-self: flex-end;
     align-items: flex-end;
-    background-color: #7ec77c;
+    background-color: #8774E1;
     border-radius: 20px 20px 0 20px;
-
     .author__msg {
-      display: flex;
-      flex-direction: row-reverse;
-      align-items: flex-end;
+      display: none;
     }
   }
 }

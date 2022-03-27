@@ -25,11 +25,11 @@
   border: none;
 }
 .userForm__form input:focus {
-  background-color: #29bec7;
+  background-color: #8774E1;
 }
 .userForm__form button {
   padding: 5px 15px;
-  background-color: #29bec7;
+  background-color: #8774E1;
   border-radius: 5px;
   color: #ffffff;
   border: none;

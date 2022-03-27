@@ -11,7 +11,7 @@ const Messages = ({user, listMsgs}) => {
     return (
         <div id="messages" className="messages">
                     {listMsgs.map((item, idx) => (
-                        <div key={idx}
+                        <div style={{background: item.author === "Админ" ? "green" : ""}} key={idx}
                             className={user === item.author ? "messages__row_message your" : "messages__row_message"}>
                             <div className="author__msg">
                                 <img src={logo} alt="logo"/>
