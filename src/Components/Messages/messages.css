@@ -18,6 +18,9 @@
   align-self: flex-start;
   animation: 1s linear msgGet;
 }
+.messages .messages__row_message .time {
+  align-self: flex-end;
+}
 .messages .messages__row_message .author {
   color: #00c1a6;
 }

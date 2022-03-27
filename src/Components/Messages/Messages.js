@@ -11,15 +11,16 @@ const Messages = ({user, listMsgs}) => {
     return (
         <div id="messages" className="messages">
                     {listMsgs.map((item, idx) => (
-                        <div style={{background: item.author === "Админ" ? "green" : ""}} key={idx}
+                        <div
+                            style={{background: item.author === "Админ" ? "green" : ""}} key={idx}
                             className={user === item.author ? "messages__row_message your" : "messages__row_message"}>
                             <div className="author__msg">
                                 <img src={logo} alt="logo"/>
-                                <span className="author">{item.author}</span>
+                                <span style={{color: item.author === "Дони шершень черный барсук великий мститель Лао-Цзы Конфуций" ? "gold" : ""}} className="author">{item.author}</span>
                             </div>
                             <span>{item.title}</span>
                             <span className="time">
-                                   Время: {item.time}
+                                {item.time}
                                 </span>
                         </div>
                     ))}

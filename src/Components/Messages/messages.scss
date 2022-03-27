@@ -17,6 +17,9 @@
     color: #ffffff;
     align-self: flex-start;
     animation: 1s linear msgGet;
+    .time{
+      align-self: flex-end;
+    }
     .author{
       color: #00c1a6;
     }
