@@ -9,7 +9,7 @@ const Main = ({user, listMsgs, writeNewMessage}) => {
                 <Messages user={user} listMsgs={listMsgs}/>
                 {user !== ""
                     ? <form className="sendMessages" onSubmit={(e) => writeNewMessage(e)}>
-                        <input type="text"/>
+                        <input required minLength="1" type="text"/>
                         <button className="sendMessage">
                             Отправить
                         </button>

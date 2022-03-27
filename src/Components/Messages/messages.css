@@ -3,7 +3,7 @@
   flex-direction: column;
   overflow-y: scroll;
   row-gap: 15px;
-  max-height: 600px;
+  max-height: calc(100vh - 168px);
   padding: 30px 0;
 }
 .messages .messages__row_message {
@@ -61,11 +61,11 @@
 }
 @media (max-width: 768px) {
   .messages {
-    max-height: 450px;
+    max-height: calc(100vh - 240px);
   }
 
   .main .sendMessages input {
-    width: 80% !important;
+    width: 90% !important;
   }
 }
 @keyframes msgGet {
