@@ -7,7 +7,7 @@
   padding: 30px 0;
 }
 .messages .messages__row_message {
-  background-color: #7ec77c;
+  background-color: #3c5f3c;
   display: flex;
   flex-direction: column;
   border-radius: 20px;
@@ -22,6 +22,11 @@
 }
 .messages .your {
   align-self: flex-end;
+  align-items: flex-end;
+  background-color: #7ec77c;
+}
+.messages .your .author {
+  flex-direction: row-reverse;
 }
 
 .messages::-webkit-scrollbar {

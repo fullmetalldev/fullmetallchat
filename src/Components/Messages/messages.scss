@@ -6,7 +6,7 @@
   max-height: 600px;
   padding: 30px 0;
   .messages__row_message{
-    background-color: #7ec77c;
+    background-color: #3c5f3c;
     display: flex;
     flex-direction: column;
     border-radius: 20px;
@@ -21,6 +21,11 @@
   }
   .your{
     align-self: flex-end;
+    align-items: flex-end;
+    background-color: #7ec77c;
+    .author{
+      flex-direction: row-reverse;
+    }
   }
 }
 .messages::-webkit-scrollbar{
