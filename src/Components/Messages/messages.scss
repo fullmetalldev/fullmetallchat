@@ -1,47 +1,82 @@
-.messages{
+.messages {
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   row-gap: 15px;
   max-height: 600px;
   padding: 30px 0;
-  .messages__row_message{
-    background-color: #3c5f3c;
+
+  .messages__row_message {
+    border-radius: 0 20px 20px 20px;
+    background: #bec7c3;
     display: flex;
     flex-direction: column;
-    border-radius: 20px;
     row-gap: 5px;
     padding: 10px 20px;
     color: #ffffff;
     align-self: flex-start;
+    animation: 1s linear msgGet;
+
+    .author__msg {
+      display: flex;
+      flex-direction: row;
+      column-gap: 5px;
+      align-items: center;
+    }
   }
-  .author{
+
+  .author {
+    border-radius: 20px 20px 0 20px;
     display: flex;
     align-items: center;
   }
-  .your{
+
+  .your {
     align-self: flex-end;
     align-items: flex-end;
     background-color: #7ec77c;
-    .author{
+    border-radius: 20px 20px 0 20px;
+
+    .author__msg {
+      display: flex;
       flex-direction: row-reverse;
+      align-items: flex-end;
     }
   }
 }
-.messages::-webkit-scrollbar{
+
+.messages::-webkit-scrollbar {
   width: 0;
 }
 
 @media (max-width: 1100px) {
-  .header__row{
+  .header__row {
     padding-left: 10px;
     padding-right: 10px;
   }
-  .messages{
+  .messages {
     padding-left: 10px;
     padding-right: 10px;
   }
-  .main .Warning{
+  .main .Warning {
     padding: 30px 10px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .messages {
+    max-height: 450px;
+  }
+  .main .sendMessages input{
+    width: 80% !important;
+  }
+}
+
+@keyframes msgGet {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
   }
 }
