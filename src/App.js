@@ -21,7 +21,7 @@ function App() {
         set(newPostRef, {
             title: e.target[0].value,
             author: user,
-            time: `${new Date().getHours()}:${new Date().getMinutes()}`
+            time: `${new Date().getHours() <= 9 ? "0" + new Date().getHours(): new Date().getHours()}:${new Date().getMinutes() <= 9 ? "0" + new Date().getMinutes() : new Date().getMinutes()}`
         });
         e.target[0].value = ""
     };
