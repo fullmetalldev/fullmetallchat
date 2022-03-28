@@ -3,7 +3,7 @@ import "./userlog.css"
 import {onValue, push, ref, set} from "firebase/database";
 import {db} from "../../firebase";
 
-const UserLogin = ({setAlertmsg, setUser, setUserForm}) => {
+const UserLogin = ({setAlertmsg, user, setUser, setUserForm}) => {
 
     const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
@@ -26,24 +26,36 @@ const UserLogin = ({setAlertmsg, setUser, setUserForm}) => {
             return elem.login === login
         }
 
-        if (usersData.some(checkIs)) {
-            setAlertmsg("Аккаунт существует!")
+        if (login.length && password.length > 2) {
+            if (usersData.some(checkIs)) {
+                setAlertmsg("Аккаунт существует!")
+            } else {
+                const usersList = ref(db, 'users');
+                const newUser = push(usersList);
+                set(newUser, {
+                    login: login,
+                    password: password,
+                    avatar: "https://yt3.ggpht.com/ytc/AKedOLQTgF1BoM1wG6t3wn2j_dg8s56AaGG_rLviVYwM=s900-c-k-c0x00ffffff-no-rj"
+                });
+                setUser({
+                    login: login,
+                    password: password,
+                    avatar: "https://yt3.ggpht.com/ytc/AKedOLQTgF1BoM1wG6t3wn2j_dg8s56AaGG_rLviVYwM=s900-c-k-c0x00ffffff-no-rj"
+                });
 
-        } else {
-            const usersList = ref(db, 'users');
-            const newUser = push(usersList);
-            set(newUser, {
-                login: login,
-                password: password,
-                avatar: "https://работазабкрай.рф/static/img/cabinet.png"
-            });
-            setUser({
-                login: login,
-                password: password,
-                img: "https://konplan.com/wp-content/uploads/2021/07/avatar-mann_shutterstock_518740741-scaled-e1627298799822.jpg",
-            });
-            setAlertmsg("Аккаунт успешно создан!");
-            setUserForm(false);
+                localStorage.setItem("user", JSON.stringify({
+                    login: login,
+                    password: password,
+                    avatar: "https://yt3.ggpht.com/ytc/AKedOLQTgF1BoM1wG6t3wn2j_dg8s56AaGG_rLviVYwM=s900-c-k-c0x00ffffff-no-rj"
+                }));
+
+                setAlertmsg("Аккаунт успешно создан!");
+                setUserForm(false);
+
+            }
+        }
+        else {
+            setAlertmsg("Не допустимое кол-во символов!")
         }
 
     };
@@ -64,8 +76,16 @@ const UserLogin = ({setAlertmsg, setUser, setUserForm}) => {
                             password: item.password,
                             avatar: item.avatar
                         });
+
+                        localStorage.setItem("user", JSON.stringify({
+                            login: item.login,
+                            password: item.password,
+                            avatar: item.avatar
+                        }));
+
                         setUserForm(false);
-                        setAlertmsg("Вы успешно вошли в аккаунт!")
+                        setAlertmsg("Вы успешно вошли в аккаунт!");
+
                     } else {
                         setAlertmsg("Вы ввели не правильный пароль!")
                     }

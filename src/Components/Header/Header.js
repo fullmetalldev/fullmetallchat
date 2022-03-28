@@ -11,9 +11,10 @@ const Header = ({setUser, setAlertmsg, userForm, setUserForm, user}) => {
                         <h2 className="appName">FullmetallChat</h2>
                     </div>
                     {user !== ""
-                        ? <div onClick={()=>{
+                        ? <div className="exitAcc" onClick={()=>{
                             setAlertmsg("Вы вышли из аккаунта!");
-                            setUser("")
+                            setUser("");
+                            localStorage.removeItem("user")
                         }}>
                             <img className="regiseterLogo" src={user.avatar} alt=""/>
                             {user.login}

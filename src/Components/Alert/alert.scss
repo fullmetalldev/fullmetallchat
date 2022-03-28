@@ -7,7 +7,7 @@
   justify-content: center;
   align-items: flex-start;
   &__message{
-    top: 50px;
+    top: 10px;
     display: flex;
     padding: 10px 45px;
     column-gap: 10px;
@@ -31,10 +31,10 @@
     top: -200px;
   }
   30%{
-    top: 50px;
+    top: 10px;
   }
   90%{
-    top: 50px;
+    top: 10px;
   }
   100%{
     top: -100px;
