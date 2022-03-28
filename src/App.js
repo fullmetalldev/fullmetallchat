@@ -48,7 +48,7 @@ function App() {
             : ""
             }
             {userForm ? <UserLogin setAlertmsg={setAlertmsg} setUser={setUser} setUserForm={setUserForm}/> : ""}
-            <Header setUserForm={setUserForm} userForm={userForm} user={user} setUser={setUser}/>
+            <Header setUser={setUser} setAlertmsg={setAlertmsg} setUserForm={setUserForm} userForm={userForm} user={user} setUser={setUser}/>
             <Main user={user} listMsgs={listMsgs} writeNewMessage={writeNewMessage}/>
         </div>
     );

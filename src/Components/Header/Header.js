@@ -2,7 +2,7 @@ import React from 'react';
 import userLogo from "./userlogo.svg"
 import "./header.css"
 
-const Header = ({userForm, setUserForm, user}) => {
+const Header = ({setUser, setAlertmsg, userForm, setUserForm, user}) => {
     return (
         <header className="header">
             <div className="container">
@@ -11,7 +11,10 @@ const Header = ({userForm, setUserForm, user}) => {
                         <h2 className="appName">FullmetallChat</h2>
                     </div>
                     {user !== ""
-                        ? <div>
+                        ? <div onClick={()=>{
+                            setAlertmsg("Вы вышли из аккаунта!");
+                            setUser("")
+                        }}>
                             <img className="regiseterLogo" src={user.avatar} alt=""/>
                             {user.login}
                         </div>

@@ -64,7 +64,8 @@ const UserLogin = ({setAlertmsg, setUser, setUserForm}) => {
                                 password: item.password,
                                 avatar: item.avatar
                             });
-                            setUserForm(false)
+                            setUserForm(false);
+                            setAlertmsg("Вы успешно вошли в аккаунт!")
                         } else {
                             setAlertmsg("Вы ввели не правильный пароль!")
                         }

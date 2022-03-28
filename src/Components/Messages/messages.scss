@@ -88,3 +88,10 @@
     opacity: 100%;
   }
 }
+
+@media (max-width: 425px) {
+  .messages .messages__row_message .author__msg img{
+    width: 30px;
+    height: 30px;
+  }
+}

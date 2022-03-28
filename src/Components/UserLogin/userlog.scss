@@ -14,7 +14,7 @@
     display: flex;
     background-color: #212121;
     padding: 50px;
-    border-radius: 20px;
+    border-radius: 25px;
     position: relative;
     z-index: 10;
     flex-direction: column;
@@ -37,7 +37,7 @@
     button{
       padding: 10px 20px;
       background-color: #8774E1;
-      border-radius: 10px;
+      border-radius: 15px;
       color: #ffffff;
       border: none;
       font-size: 20px;
@@ -51,5 +51,17 @@
     top: 0;
     position: absolute;
     background-color: #00000080;
+  }
+}
+
+@media (max-width: 425px) {
+  .userForm__form{
+    padding: 40px;
+  }
+  .userForm__buttons{
+    column-gap: 15px;
+    button{
+      font-size: 18px ;
+    }
   }
 }
