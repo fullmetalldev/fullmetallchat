@@ -30,6 +30,10 @@
   column-gap: 5px;
   align-items: center;
 }
+.messages .messages__row_message .author__msg img {
+  width: 40px;
+  height: 40px;
+}
 .messages .author {
   border-radius: 20px 20px 0 20px;
   display: flex;

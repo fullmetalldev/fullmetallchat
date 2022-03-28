@@ -4,26 +4,26 @@ import logo from "../Header/userlogo.svg"
 
 const Messages = ({user, listMsgs}) => {
 
-    useEffect(()=>{
+    useEffect(() => {
         document.getElementById('messages').scrollTop = document.getElementById("messages").scrollHeight;
     }, [listMsgs]);
 
     return (
         <div id="messages" className="messages">
-                    {listMsgs.map((item, idx) => (
-                        <div
-                            style={{background: item.author === "Admin" ? "green" : ""}} key={idx}
-                            className={user.login === item.author ? "messages__row_message your" : "messages__row_message"}>
-                            <div className="author__msg">
-                                <img src={logo} alt="logo"/>
-                                <span className="author">{item.author}</span>
-                            </div>
-                            <span>{item.title}</span>
-                            <span className="time">
+            {listMsgs.map((item, idx) => (
+                <div
+                    key={idx}
+                    className={user.login === item.author ? "messages__row_message your" : "messages__row_message"}>
+                    <div className="author__msg">
+                        <img src={item.avatar ? item.avatar : logo} alt="logo"/>
+                        <span className="author">{item.author}</span>
+                    </div>
+                    <span>{item.title}</span>
+                    <span className="time">
                                 {item.time}
                                 </span>
-                        </div>
-                    ))}
+                </div>
+            ))}
         </div>
 
     );
