@@ -6,12 +6,17 @@ import Header from "./Components/Header/Header";
 import UserLogin from "./Components/UserLogin/UserLogin";
 import Messages from "./Components/Messages/Messages";
 import Main from "./Components/Main/Main";
+import Alert from "./Components/Alert/Alert";
 
 function App() {
 
     const [listMsgs, setListMsgs] = useState([]);
-    const [user, setUser] = useState("");
+
+    const [user, setUser] = useState('');
+
     const [userForm, setUserForm] = useState(false);
+
+    const [alertmsg, setAlertmsg] = useState('');
 
 
     const writeNewMessage = (e) => {
@@ -20,7 +25,7 @@ function App() {
         const newPostRef = push(postListRef);
         set(newPostRef, {
             title: e.target[0].value,
-            author: user,
+            author: user.login,
             time: `${new Date().getHours() <= 9 ? "0" + new Date().getHours(): new Date().getHours()}:${new Date().getMinutes() <= 9 ? "0" + new Date().getMinutes() : new Date().getMinutes()}`
         });
         e.target[0].value = ""
@@ -36,10 +41,13 @@ function App() {
     }, []);
 
 
-
     return (
         <div className="App">
-            {userForm ? <UserLogin setUser={setUser} setUserForm={setUserForm}/> : ""}
+            {alertmsg !== ""
+            ? <Alert alertmsg={alertmsg} setAlertmsg={setAlertmsg}/>
+            : ""
+            }
+            {userForm ? <UserLogin setAlertmsg={setAlertmsg} setUser={setUser} setUserForm={setUserForm}/> : ""}
             <Header setUserForm={setUserForm} userForm={userForm} user={user} setUser={setUser}/>
             <Main user={user} listMsgs={listMsgs} writeNewMessage={writeNewMessage}/>
         </div>

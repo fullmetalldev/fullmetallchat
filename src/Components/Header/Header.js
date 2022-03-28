@@ -2,7 +2,7 @@ import React from 'react';
 import userLogo from "./userlogo.svg"
 import "./header.css"
 
-const Header = ({userForm, setUserForm, user, setUser}) => {
+const Header = ({userForm, setUserForm, user}) => {
     return (
         <header className="header">
             <div className="container">
@@ -12,8 +12,8 @@ const Header = ({userForm, setUserForm, user, setUser}) => {
                     </div>
                     {user !== ""
                         ? <div>
-                            <img className="regiseterLogo" src={userLogo} alt=""/>
-                            {user}
+                            <img className="regiseterLogo" src={user.avatar} alt=""/>
+                            {user.login}
                         </div>
                         : <div onClick={()=> setUserForm(!userForm)}>
                             <span>Войти</span>

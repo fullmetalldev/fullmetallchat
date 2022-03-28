@@ -6,8 +6,15 @@
   width: 100vw;
   height: 100vh;
   z-index: 5;
+  &__buttons{
+    display: flex;
+    column-gap: 30px;
+  }
   &__form{
     display: flex;
+    background-color: #212121;
+    padding: 50px;
+    border-radius: 20px;
     position: relative;
     z-index: 10;
     flex-direction: column;
@@ -15,25 +22,26 @@
     align-items: flex-start;
     row-gap: 15px;
     input{
+      width: 100%;
       font-size: 16px;
-      color: #ffffff;
+      color: #212121;
       border-radius: 5px;
       padding: 5px 10px;
       outline: none;
       border: none;
     }
-
-
     input:focus{
       background-color: #8774E1;
+      color: #ffffff;
     }
     button{
-      padding: 5px 15px;
+      padding: 10px 20px;
       background-color: #8774E1;
-      border-radius: 5px;
+      border-radius: 10px;
       color: #ffffff;
       border: none;
       font-size: 20px;
+      cursor: pointer;
     }
   }
   .blackBack{
