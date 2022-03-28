@@ -20,6 +20,11 @@
   animation: startAlert 2s ease-in-out;
 }
 
+@media (max-width: 425px) {
+  .alert__message {
+    padding: 10px 25px;
+  }
+}
 @keyframes startAlert {
   0% {
     top: -200px;

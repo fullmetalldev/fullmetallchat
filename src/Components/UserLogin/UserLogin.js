@@ -5,9 +5,9 @@ import {db} from "../../firebase";
 
 const UserLogin = ({setAlertmsg, setUser, setUserForm}) => {
 
+    const [login, setLogin] = useState("");
     const [password, setPassword] = useState("");
 
-    const [login, setLogin] = useState("");
 
     const [usersData, setUsersData] = useState('');
 
@@ -20,31 +20,31 @@ const UserLogin = ({setAlertmsg, setUser, setUserForm}) => {
     }, []);
 
 
-    const reg = (e) => {
+    const registerFunc = () => {
 
         function checkIs(elem) {
-            return elem.login !== login
+            return elem.login === login
         }
 
         if (usersData.some(checkIs)) {
-            usersData.forEach((item) => {
-                if (item.login !== login) {
-                        const usersList = ref(db, 'users');
-                        const newUser = push(usersList);
-                        set(newUser, {
-                            login: login,
-                            password: password,
-                            avatar: "https://работазабкрай.рф/static/img/cabinet.png"
-                        });
-                        setAlertmsg("Аккаунт успешно создан!")
-
-                }
-            })
+            setAlertmsg("Аккаунт существует!")
 
         } else {
-            setAlertmsg("Такой логин уже существует!")
+            const usersList = ref(db, 'users');
+            const newUser = push(usersList);
+            set(newUser, {
+                login: login,
+                password: password,
+                avatar: "https://работазабкрай.рф/static/img/cabinet.png"
+            });
+            setUser({
+                login: login,
+                password: password,
+                img: "https://konplan.com/wp-content/uploads/2021/07/avatar-mann_shutterstock_518740741-scaled-e1627298799822.jpg",
+            });
+            setAlertmsg("Аккаунт успешно создан!");
+            setUserForm(false);
         }
-
 
     };
 
@@ -55,28 +55,28 @@ const UserLogin = ({setAlertmsg, setUser, setUserForm}) => {
             return elem.login === login
         }
 
-            if (usersData.some(checkIs)) {
-                usersData.forEach((item) => {
-                    if (item.login === login) {
-                        if (item.password === password) {
-                            setUser({
-                                login: item.login,
-                                password: item.password,
-                                avatar: item.avatar
-                            });
-                            setUserForm(false);
-                            setAlertmsg("Вы успешно вошли в аккаунт!")
-                        } else {
-                            setAlertmsg("Вы ввели не правильный пароль!")
-                        }
-
+        if (usersData.some(checkIs)) {
+            usersData.forEach((item) => {
+                if (item.login === login) {
+                    if (item.password === password) {
+                        setUser({
+                            login: item.login,
+                            password: item.password,
+                            avatar: item.avatar
+                        });
+                        setUserForm(false);
+                        setAlertmsg("Вы успешно вошли в аккаунт!")
+                    } else {
+                        setAlertmsg("Вы ввели не правильный пароль!")
                     }
 
-                })
+                }
 
-            } else {
-                setAlertmsg("Логин не найден!")
-            }
+            })
+
+        } else {
+            setAlertmsg("Логин не найден!")
+        }
     };
 
     return (
@@ -94,7 +94,7 @@ const UserLogin = ({setAlertmsg, setUser, setUserForm}) => {
                     type="password"/>
                 <div className="userForm__buttons">
                     <button type="button" onClick={() => log()}>Вход</button>
-                    <button type="button" onClick={() => reg()}>Регистрация</button>
+                    <button type="button" onClick={() => registerFunc()}>Регистрация</button>
                 </div>
             </form>
             <div onClick={() => setUserForm(false)} className="blackBack">
